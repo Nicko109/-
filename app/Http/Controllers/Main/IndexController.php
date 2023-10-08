@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Guest;
+namespace App\Http\Controllers\Main;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -9,7 +9,7 @@ class IndexController extends Controller
 {
     public function index()
     {
-        return view('guest.index');
+        return view('main.index');
     }
 }
 
