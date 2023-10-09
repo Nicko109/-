@@ -7,7 +7,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6 d-flex align-items-center">
-                        <h1 class="m-0">{{ $user->title }}</h1>
+                        <h1 class="m-0">{{ $user->name }}</h1>
                         <a href="{{ route('admin.user.edit', $user->id) }}" class="text-success"><i class="fas fa-edit ml-3"></i></a>
                         <td class="text-center">
                             <form action="{{ route('admin.user.delete', $user->id) }}" method="POST">
@@ -23,7 +23,7 @@
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ route('admin.main.index') }}">Главная</a></li>
                             <li class="breadcrumb-item"><a href="{{ route('admin.user.index') }}">Пользователи</a></li>
-                            <li class="breadcrumb-item active">{{ $user->title }}</li>
+                            <li class="breadcrumb-item active">{{ $user->name }}</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -50,7 +50,7 @@
                                         </tr>
                                         <tr>
                                             <td>Название</td>
-                                            <td>{{ $user->title }}</td>
+                                            <td>{{ $user->name }}</td>
                                         </tr>
                                         </tbody>
                                     </table>

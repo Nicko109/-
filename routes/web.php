@@ -18,8 +18,12 @@ Auth::routes();
 
 Route::get('/', [App\Http\Controllers\Main\IndexController::class, 'index']);
 
+Route::group(['middleware' => ['auth', 'admin']], function () {
+
 Route::prefix('admin')->group(function () {
     Route::get('/', [App\Http\Controllers\Admin\MainController::class, 'index'])->name('admin.main.index');
+
+
 
         Route::prefix('tasks')->group(function () {
             Route::get('/', [App\Http\Controllers\Admin\TaskController::class, 'index'])->name('admin.task.index');
@@ -49,5 +53,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/{user}/edit', [App\Http\Controllers\Admin\UserController::class, 'edit'])->name('admin.user.edit');
         Route::patch('/{user}', [App\Http\Controllers\Admin\UserController::class, 'update'])->name('admin.user.update');
         Route::delete('/{user}', [App\Http\Controllers\Admin\UserController::class, 'delete'])->name('admin.user.delete');
+    });
+
     });
 });

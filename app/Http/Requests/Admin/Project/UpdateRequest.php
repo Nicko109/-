@@ -25,4 +25,12 @@ class UpdateRequest extends FormRequest
             'title' => 'required|string'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'title.required' => 'Это поле необходимо для заполнения',
+            'title.string' => 'Данные должны соответствовать строчному типу',
+        ];
+    }
 }

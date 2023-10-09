@@ -34,7 +34,6 @@
 
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-        <!-- Left navbar links -->
         <div class="col-12 d-flex justify-content-between">
             <ul class="navbar-nav">
                 <li class="nav-item">

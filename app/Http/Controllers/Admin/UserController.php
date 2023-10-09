@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\User\StoreRequest;
 use App\Http\Requests\Admin\User\UpdateRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -24,25 +25,34 @@ class UserController extends Controller
 
     public function create()
     {
-        return view('admin.user.create');
+        $roles = User::getRoles();
+
+        return view('admin.user.create', compact('roles'));
     }
 
     public function store(StoreRequest $request)
     {
         $data = $request->validated();
-        User::firstOrcreate($data);
+
+        $data['password'] = Hash::make($data['password']);
+
+        User::firstOrcreate(['email' => $data['email']], $data);
 
         return redirect()->route('admin.user.index');
     }
 
     public function edit(User $user)
     {
-        return view('admin.user.edit', compact('user'));
+
+        $roles = User::getRoles();
+
+        return view('admin.user.edit', compact('user', 'roles'));
     }
 
     public function update(User $user, UpdateRequest $request)
     {
         $data = $request->validated();
+
         $user->update($data);
 
         return redirect()->route('admin.user.show', compact('user'));

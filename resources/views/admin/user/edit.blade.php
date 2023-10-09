@@ -31,10 +31,34 @@
                         @csrf
                         @method('PATCH')
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Имя пользователя" name="title"  value="{{ $user->title }}">
-                            @error('title')
+                            <input type="text" class="form-control" placeholder="Имя пользователя" name="name"  value="{{ $user->name }}">
+                            @error('name')
                             <div class="text-danger">Это поле необходимо для заполнения</div>
                             @enderror
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Электронная почта" name="email"
+                            value="{{ $user->email }}"
+                            >
+                            @error('email')
+                            <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label>Выберите роль</label>
+                            <select name="role" class="form-control">
+                                @foreach($roles as $id => $role)
+                                    <option value="{{ $id }}"
+                                        {{ $id == $user->role ? 'selected' : ''}}
+                                    >{{ $role }}</option>
+                                @endforeach
+                            </select>
+                            @error('role')
+                            <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group w-50">
+                            <input type="hidden" name="user_id" value="{{ $user->id }}">
                         </div>
                         <input type="submit" class="btn btn-primary" value="Изменить">
                     </form>
