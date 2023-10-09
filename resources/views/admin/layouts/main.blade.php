@@ -80,6 +80,7 @@
     $.widget.bridge('uibutton', $.ui.button)
 </script>
 <script src="{{ asset('plugins/moment/moment.min.js') }}"></script>
+<script src="{{asset('plugins/inputmask/jquery.inputmask.min.js')}}"></script>
 <script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
 <script src="{{ asset('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
 <script src="{{ asset('plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
@@ -104,6 +105,7 @@
         bsCustomFileInput.init();
     });
     $('.select2').select2()
+
 </script>
 <style>
     .custom-file-input:lang(en)~.custom-file-label::after{

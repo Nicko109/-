@@ -15,4 +15,9 @@ class Project extends Model
     protected $guarded = false;
 
     protected $table = 'projects';
+
+    public function tasks()
+    {
+        return $this->hasMany(Project::class, 'project_id', 'id');
+    }
 }
