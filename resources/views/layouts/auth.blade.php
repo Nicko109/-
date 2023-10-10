@@ -3,19 +3,20 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Дела в порядке</title>
-    <link rel="stylesheet" href="{{ asset('../css/normalize.css') }}">
-    <link rel="stylesheet" href="{{ asset('../css/style.css') }}">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
-<body class="body-background">
+<body>
 <h1 class="visually-hidden">Дела в порядке</h1>
 
 <div class="page-wrapper">
     <div class="container">
+
         <header class="main-header">
-            <a href="#">
-                <img src="{{ asset('../img/logo.png') }}" width="153" height="42" alt="Логитип Дела в порядке">
+            <a href="/">
+                <img src="../img/logo.png" width="153" height="42" alt="Логитип Дела в порядке">
             </a>
 
             <div class="main-header__side">
@@ -24,9 +25,10 @@
         </header>
 
         <div class="content">
+            @include('main.include.sidebar')
             @yield('content')
-
         </div>
+
     </div>
 </div>
 
@@ -81,7 +83,7 @@
             <span class="visually-hidden">Разработано:</span>
 
             <a href="https://htmlacademy.ru/intensive/php">
-                <img src="{{ asset('../img/htmlacademy.svg') }}" alt="HTML Academy" width="118" height="40">
+                <img src="../img/htmlacademy.svg" alt="HTML Academy" width="118" height="40">
             </a>
         </div>
     </div>

@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Validator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +22,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Validator::extend('password', function ($attribute, $value, $parameters, $validator) {
+            // Получите пользователя по email
+            $user = User::where('email', $validator->getData()['email'])->first();
+
+            // Проверьте, совпадает ли пароль
+            if ($user && Hash::check($value, $user->password)) {
+                return true;
+            }
+
+            return false;
+        });
     }
 }
