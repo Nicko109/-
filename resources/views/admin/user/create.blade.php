@@ -45,14 +45,6 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Пароль" name="password"
-                                   value="{{old('password')}}"
-                            >
-                            @error('password')
-                            <div class="text-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="form-group">
                             <label>Выберите роль</label>
                             <select name="role" class="form-control">
                                 @foreach($roles as $id => $role)
