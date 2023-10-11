@@ -69,7 +69,7 @@
                                         >{{ $project->title }}</option>
                                         @endforeach
                                     </select>
-                                    @error('category_id')
+                                    @error('project_id')
                                     <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>

@@ -771,3 +771,11 @@ a:focus {
 .welcome__text p {
   margin: 20px 0;
 }
+.logout-button {
+    background: none; /* Убрать фон */
+    border: none; /* Убрать границу */
+    color: inherit; /* Использовать цвет текста по умолчанию */
+    cursor: pointer; /* Изменить курсор при наведении */
+    padding: 0; /* Убрать внутренний отступ */
+    font: inherit; /* Использовать шрифт по умолчанию (если установлен) */
+}

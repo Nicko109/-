@@ -18,6 +18,11 @@ class Project extends Model
 
     public function tasks()
     {
-        return $this->hasMany(Project::class, 'project_id', 'id');
+        return $this->hasMany(Task::class, 'project_id', 'id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 }

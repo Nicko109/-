@@ -34,6 +34,9 @@ class TaskController extends Controller
     public function store(StoreRequest $request)
     {
         $data = $request->validated();
+
+        $data['user_id'] = auth()->user()->id;
+
         if (isset($data['file'])) {
             $data['file'] = Storage::disk('public')->put('/files', $data['file']);
         }

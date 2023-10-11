@@ -43,7 +43,7 @@
                         <!-- small box -->
                         <div class="small-box bg-success">
                             <div class="inner">
-                                <h3>{{ $data['projectsCount'] }}</h3>
+                                <h3>{{ $data['tasksCount'] }}</h3>
 
                                 <p>Задачи</p>
                             </div>
@@ -58,7 +58,7 @@
                         <!-- small box -->
                         <div class="small-box bg-warning">
                             <div class="inner">
-                                <h3>{{ $data['tasksCount'] }}</h3>
+                                <h3>{{ $data['projectsCount'] }}</h3>
 
                                 <p>Проекты</p>
                             </div>

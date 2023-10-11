@@ -30,6 +30,9 @@ class ProjectController extends Controller
     public function store(StoreRequest $request)
     {
         $data = $request->validated();
+
+        $data['user_id'] = auth()->user()->id;
+
         Project::firstOrcreate($data);
 
         return redirect()->route('admin.project.index');

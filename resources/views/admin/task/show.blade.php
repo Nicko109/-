@@ -56,6 +56,10 @@
                                             <td>Дата выполнения</td>
                                             <td>{{ \Carbon\Carbon::parse($task->deadline)->format('d.m.Y') }}</td>
                                         </tr>
+                                        <tr>
+                                            <td>Проект</td>
+                                            <td>{{ $task->project->title }}</td>
+                                        </tr>
                                         </tbody>
                                     </table>
                                 </div>

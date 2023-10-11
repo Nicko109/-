@@ -52,6 +52,7 @@
                                                 <td>{{ $task->id }}</td>
                                                 <td>{{ $task->title }}</td>
                                                 <td>{{ \Carbon\Carbon::parse($task->deadline)->format('d.m.Y') }}</td>
+                                                <td>{{ $task->project->title }}</td>
                                                 <td class="text-center"> <a href="{{ route('admin.task.show', $task->id) }}"><i class="far fa-eye"></i></a></td>
                                                 <td class="text-center"> <a href="{{ route('admin.task.edit', $task->id) }}" class="text-success"><i class="fas fa-edit"></i></a></td>
                                                 <td class="text-center">
