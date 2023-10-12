@@ -16,9 +16,9 @@ class ProjectController extends Controller
     {
         $user = Auth::user();
 
-        $projects = Project::where('user_id', $user->id)->paginate(5);
+        $projects = Project::where('user_id', $user->id)->get();
 
-        return view('personal.project.create', compact('projects'));
+        return view('personal.project.create', compact('projects', 'user'));
     }
 
     public function store(StoreRequest $request)

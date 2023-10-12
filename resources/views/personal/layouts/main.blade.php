@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ asset('css/normalize.css') }}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <link rel="stylesheet" href="{{asset('css/flatpickr.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('build/assets/app-bbd6a014.css') }}">
 </head>
 
 <body>

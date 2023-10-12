@@ -19,9 +19,9 @@ class TaskController extends Controller
     {
         $user = Auth::user();
 
-        $projects = Project::where('user_id', $user->id)->paginate(5);
+        $projects = Project::where('user_id', $user->id)->paginate(8);
 
-        return view('personal.task.create', compact('projects'));
+        return view('personal.task.create', compact('projects', 'user'));
     }
 
     public function store(StoreRequest $request)

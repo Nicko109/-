@@ -15,8 +15,8 @@ class TaskController extends Controller
     public function index()
     {
         $tasks = Task::all();
-
-        return view('admin.task.index', compact('tasks'));
+        $projects = Project::all();
+        return view('admin.task.index', compact('tasks', 'projects'));
     }
 
     public function show(Task $task)

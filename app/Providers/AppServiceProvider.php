@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\User;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Validator;
@@ -33,5 +34,7 @@ class AppServiceProvider extends ServiceProvider
 
             return false;
         });
+
+        Paginator::defaultView('vendor.pagination.semantic-ui');
     }
 }

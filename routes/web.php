@@ -32,6 +32,8 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('/create', [App\Http\Controllers\Main\TaskController::class, 'create'])->name('main.task.create');
             Route::post('/', [App\Http\Controllers\Main\TaskController::class, 'store'])->name('main.task.store');
         });
+
+        Route::get('tasks/project/{project}', [App\Http\Controllers\Main\IndexController::class, 'index'])->name('personal.main.index.project');
     });
 });
 

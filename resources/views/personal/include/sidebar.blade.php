@@ -4,10 +4,10 @@
     <nav class="main-navigation">
         <ul class="main-navigation__list">
             @foreach($projects as $project)
-            <li class="main-navigation__list-item">
-                <a class="main-navigation__list-item-link" href="#">{{ $project->title }}</a>
-                <span class="main-navigation__list-item-count">{{ $project->tasks->count() }}</span>
-            </li>
+                <li class="main-navigation__list-item{{ request('project') == $project->id ? ' main-navigation__list-item--active' : '' }}">
+                    <a class="main-navigation__list-item-link" href="{{ route('personal.main.index', ['project' => $project->id]) }}">{{ $project->title }}</a>
+                    <span class="main-navigation__list-item-count">{{ $project->tasks->count() }}</span>
+                </li>
             @endforeach
         </ul>
     </nav>
