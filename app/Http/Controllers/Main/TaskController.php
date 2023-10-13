@@ -38,5 +38,20 @@ class TaskController extends Controller
     }
 
 
+    public function toggleStatus(Task $task)
+    {
+        // Получаем текущий статус задачи
+        $currentStatus = $task->status;
+
+        // Изменяем статус на противоположный
+        $task->status = $currentStatus === 0 ? 1 : 0;
+
+        // Сохраняем изменения
+        $task->save();
+
+        // Другая логика, например, перенаправление или что-то еще
+
+        return redirect()->back();
+    }
 }
 

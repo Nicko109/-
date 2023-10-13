@@ -102,7 +102,11 @@
 </footer>
 
 <script src="{{ asset('flatpickr.js') }}"></script>
+<script src="{{ asset('jquery.js') }}"></script>
 <script src="{{ asset('script.js') }}"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
 </body>
 </html>
 

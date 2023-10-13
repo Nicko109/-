@@ -27,22 +27,28 @@
                 </form>
                 <table class="tasks">
                     @foreach($tasks as $task)
-                    <tr class="tasks__item task">
-                        <td class="task__select">
-                            <label class="checkbox task__checkbox">
-                                <input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1">
-                                <span class="checkbox__text">{{ $task->title }}</span>
-                            </label>
-                        </td>
+                        <tr class="tasks__item task {{ $task->deadline <= now()->toDateString() ? 'task--important' : '' }}">
+                            <td class="task__select">
+                                <form method="POST" action="{{ route('tasks.toggle-status', $task) }}">
+                                    @csrf
+                                    @method('POST')
+                                    <button type="submit"></button>
+                                    <label class="checkbox task__checkbox">
+                                        <input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1">
+                                        <span class="checkbox__text">{{ $task->title }}</span>
+                                    </label>
+                                </form>
+                            </td>
 
-                        <td class="task__file">
-                            @if(isset($task['file']))
-                            <a class="download-link" href="#">Home.psd</a>
-                            @endif
-                        </td>
+                            <td class="task__file">
+                                @if(isset($task['file']))
+                                    <a class="download-link" href="#">Home.psd</a>
+                                @endif
+                            </td>
 
-                        <td class="task__date">{{ \Carbon\Carbon::parse($task->deadline)->format('d.m.Y') }}</td>
-                    </tr>
+                            <td class="task__date">{{ \Carbon\Carbon::parse($task->deadline)->format('d.m.Y') }}</td>
+
+                        </tr>
                 @endforeach
 
                     <!--показывать следующий тег <tr/>, если переменная $show_complete_tasks равна единице-->

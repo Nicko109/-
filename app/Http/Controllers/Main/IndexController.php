@@ -20,6 +20,7 @@ class IndexController extends Controller
 
         $taskQuery = Task::where('user_id', $user->id);
 
+
         if (isset($data['title'])) {
             $taskQuery->where('title', 'like', "%{$data['title']}%");
         }
@@ -50,5 +51,8 @@ class IndexController extends Controller
 
         return view('personal.main.index', compact('projects', 'tasks', 'user'));
     }
+
+
+
 }
 
