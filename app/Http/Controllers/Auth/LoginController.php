@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Main\User\AuthRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -39,10 +40,11 @@ class LoginController extends Controller
         $this->middleware('main')->except('logout');
     }
 
-    protected function attemptLogin(AuthRequest $request)
+    protected function attemptLogin(Request $request)
     {
         return $this->guard()->attempt(
             $this->credentials($request), $request->filled('remember')
         );
     }
 }
+

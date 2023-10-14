@@ -41,6 +41,8 @@ class IndexController extends Controller
                 $taskQuery->whereDate('deadline', now()->addDay()->toDateString());
             } elseif ($filter == 'overdue') {
                 $taskQuery->whereDate('deadline', '<', now()->toDateString());
+            } elseif ($filter == 'completed') {
+                $taskQuery->where('status', 1);
             }
         }
 

@@ -524,7 +524,7 @@ a:focus {
   color: #d82727;
 }
 
-.task--important .task__select .task__checkbox::before {
+.task--important .task__checkbox::before {
   content: "";
   position: absolute;
   top: 3px;
@@ -536,7 +536,7 @@ a:focus {
   background: url("../img/fire.png") no-repeat 0 0;
 }
 
-.task--important .task__select .checkbox__text {
+.task--important   {
   padding-left: 50px;
 }
 
@@ -780,11 +780,16 @@ a:focus {
     font: inherit; /* Использовать шрифт по умолчанию (если установлен) */
 }
 
-.checkbox__input:checked ~ .checkbox__text{
+.checkbox__input:checked ~ .checkbox__text {
 
     text-decoration: line-through;
     color: rgba(49, 49, 58, 0.2);
 }
 
+
+.task---completed {
+    text-decoration: line-through;
+    color: rgba(49, 49, 58, 0.2);
+}
 
 

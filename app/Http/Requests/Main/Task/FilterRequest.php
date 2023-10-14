@@ -23,7 +23,7 @@ class FilterRequest extends FormRequest
     {
         return [
             'title' => 'nullable|string',
-            'filter' => 'in:today,tomorrow,overdue,all',
+            'filter' => 'in:today,tomorrow,overdue,all,completed',
             'project_id' => 'exists,id',
         ];
     }
