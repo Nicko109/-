@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>Дела в порядке</title>
     <link rel="stylesheet" href="{{ asset('../css/normalize.css') }}">
     <link rel="stylesheet" href="{{ asset('../css/style.css') }}">
 </head>
@@ -19,12 +19,13 @@
             </a>
 
             <div class="main-header__side">
-                <a class="main-header__side-item button button--transparent" href="form-authorization.blade.php">Войти</a>
+                <a class="main-header__side-item button button--transparent" href="{{ route('login') }}">Войти</a>
             </div>
         </header>
 
         <div class="content">
             @yield('content')
+
         </div>
     </div>
 </div>
