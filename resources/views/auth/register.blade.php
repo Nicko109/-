@@ -36,7 +36,7 @@
                             <label class="form__label" for="name">Имя <sup>*</sup></label>
 
                                 <input id="name" type="text" class="form__input @error('name') form__input--error @enderror"
-                                       name="name" value="{{ old('name') }}" placeholder="Введите имя">
+                                       name="name" value="" placeholder="Введите имя">
 
                                 @error('name')
                                 <span class="form__message" role="alert">
