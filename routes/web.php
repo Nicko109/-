@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\Guest\IndexController::class, 'index']);
-Route::post('/tasks/toggle-status/{task}', [App\Http\Controllers\Main\TaskController::class, 'toggleStatus'])->name('tasks.toggle-status');
+
 
 Route::group(['middleware' => 'auth'], function () {
     Route::prefix('personal')->group(function () {
@@ -35,7 +35,7 @@ Route::group(['middleware' => 'auth'], function () {
         });
 
         Route::get('tasks/project/{project}', [App\Http\Controllers\Main\IndexController::class, 'index'])->name('personal.main.index.project');
-
+        Route::post('/toggle-status/{task}', [App\Http\Controllers\Main\TaskController::class, 'toggleStatus'])->name('tasks.toggle-status');
 
     });
 
