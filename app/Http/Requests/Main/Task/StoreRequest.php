@@ -23,7 +23,7 @@ class StoreRequest extends FormRequest
     {
         return [
             'title' => 'required|string',
-            'deadline' => 'required|date',
+            'deadline' => 'required|date|after_or_equal:today',
             'file' => 'nullable|file',
             'project_id' => 'required|integer|exists:projects,id',
         ];
@@ -36,6 +36,7 @@ class StoreRequest extends FormRequest
             'title.string' => 'Данные должны соответствовать строчному типу',
             'deadline.required' => 'Это поле необходимо для заполнения',
             'deadline.date' => 'Данные должны соответствовать типу даты',
+            'deadline.after_or_equal' => 'Дата не может быть раньше сегодняшней',
             'file.file' => 'Необходимо выбрать файл',
             'project_id.required' => 'Это поле необходимо для заполнения',
             'project_id.integer' => 'Id проекта должен быть числом',

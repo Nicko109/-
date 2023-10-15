@@ -32,19 +32,19 @@ class IndexController extends Controller
 
 
 
-        $filter = $request->input('filter');
+            $filter = $request->input('filter');
 
-        if ($filter) {
-            if ($filter == 'today') {
-                $taskQuery->whereDate('deadline', now()->toDateString());
-            } elseif ($filter == 'tomorrow') {
-                $taskQuery->whereDate('deadline', now()->addDay()->toDateString());
-            } elseif ($filter == 'overdue') {
-                $taskQuery->whereDate('deadline', '<', now()->toDateString());
-            } elseif ($filter == 'completed') {
-                $taskQuery->where('status', 1);
+            if ($filter) {
+                if ($filter == 'today') {
+                    $taskQuery->whereDate('deadline', now()->toDateString());
+                } elseif ($filter == 'tomorrow') {
+                    $taskQuery->whereDate('deadline', now()->addDay()->toDateString());
+                } elseif ($filter == 'overdue') {
+                    $taskQuery->whereDate('deadline', '<', now()->toDateString());
+                } elseif ($filter == 'completed') {
+                    $taskQuery->where('status', 1);
+                }
             }
-        }
 
         $tasks = $taskQuery->paginate(6);
 
