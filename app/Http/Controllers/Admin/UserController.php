@@ -3,16 +3,30 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\User\FilterRequest;
 use App\Http\Requests\Admin\User\StoreRequest;
 use App\Http\Requests\Admin\User\UpdateRequest;
+use App\Models\Project;
+use App\Models\Task;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function index()
+    public function index(FilterRequest $request)
     {
+        $user = Auth::user();
+
+        $data = $request->validated();
+
+        $userQuery = User::all();
+
+        if (isset($data['name'])) {
+            $userQuery->where('name', 'like', "%{$data['name']}%");
+        }
+
         $users = User::all();
 
         return view('admin.user.index', compact('users'));
@@ -20,7 +34,10 @@ class UserController extends Controller
 
     public function show(User $user)
     {
-        return view('admin.user.show', compact('user'));
+        $taskQuery = Task::where('user_id', $user->id);
+        $tasks = $taskQuery->paginate(6);
+        $projects = Project::all();
+        return view('admin.user.show', compact('user', 'tasks', 'projects'));
     }
 
     public function create()

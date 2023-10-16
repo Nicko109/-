@@ -14,7 +14,7 @@ class TaskController extends Controller
 {
     public function index()
     {
-        $tasks = Task::all();
+        $tasks = Task::paginate(8);
         $projects = Project::all();
         return view('admin.task.index', compact('tasks', 'projects'));
     }

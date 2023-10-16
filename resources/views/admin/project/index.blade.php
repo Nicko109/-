@@ -64,6 +64,9 @@
                                         @endforeach
                                         </tbody>
                                     </table>
+                                    <div>
+                                        {{ $projects->withQueryString()->links() }}
+                                    </div>
                                 </div>
                                 <!-- /.card-body -->
                             </div>

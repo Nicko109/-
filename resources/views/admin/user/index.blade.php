@@ -30,6 +30,12 @@
                     </div>
                 </div>
 
+                <form class="search-form" action="{{ route('admin.user.index') }}" autocomplete="off">
+                    <input class="search-form__input" type="text" name="name" placeholder="Поиск" value="{{ request()->get('name') }}">
+
+                    <input class="btn-primary mb-3" type="submit">
+                </form>
+
                 <div class="row">
                     <div class="col-6">
                             <div class="card">
@@ -41,6 +47,7 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Имя</th>
+                                            <th>Email</th>
                                             <th colspan="3" class="text-center">Действие</th>
                                         </tr>
                                         </thead>
@@ -49,6 +56,7 @@
                                             <tr>
                                                 <td>{{ $user->id }}</td>
                                                 <td>{{ $user->name }}</td>
+                                                <td>{{ $user->email }}</td>
                                                 <td class="text-center"> <a href="{{ route('admin.user.show', $user->id) }}"><i class="far fa-eye"></i></a></td>
                                                 <td class="text-center"> <a href="{{ route('admin.user.edit', $user->id) }}" class="text-success"><i class="fas fa-edit"></i></a></td>
                                                 <td class="text-center">
@@ -64,6 +72,9 @@
                                         @endforeach
                                         </tbody>
                                     </table>
+                                    <div>
+                                        {{ $users->withQueryString()->links() }}
+                                    </div>
                                 </div>
                                 <!-- /.card-body -->
                             </div>
@@ -71,6 +82,7 @@
                     </div>
                 </div>
                 <!-- /.row -->
+
 
             </div><!-- /.container-fluid -->
         </section>

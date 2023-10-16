@@ -30,7 +30,7 @@
                     </div>
                 </div>
 
-                <div class="row w-75">
+                <div class="row w-100">
                     <div class="col-12">
                             <div class="card">
 
@@ -42,6 +42,7 @@
                                             <th>ID</th>
                                             <th>Название</th>
                                             <th>Дата выполнения</th>
+                                            <th>Пользователь</th>
                                             <th>Проект</th>
                                             <th colspan="4" class="text-center">Действие</th>
                                         </tr>
@@ -52,6 +53,7 @@
                                                 <td>{{ $task->id }}</td>
                                                 <td>{{ $task->title }}</td>
                                                 <td>{{ \Carbon\Carbon::parse($task->deadline)->format('d.m.Y') }}</td>
+                                                <td>{{ $task->user->name }}</td>
                                                 <td>{{ $task->project->title }}</td>
                                                 <td class="text-center"> <a href="{{ route('admin.task.show', $task->id) }}"><i class="far fa-eye"></i></a></td>
                                                 <td class="text-center"> <a href="{{ route('admin.task.edit', $task->id) }}" class="text-success"><i class="fas fa-edit"></i></a></td>
@@ -68,6 +70,9 @@
                                         @endforeach
                                         </tbody>
                                     </table>
+                                    <div>
+                                        {{ $tasks->withQueryString()->links() }}
+                                    </div>
                                 </div>
                                 <!-- /.card-body -->
                             </div>
