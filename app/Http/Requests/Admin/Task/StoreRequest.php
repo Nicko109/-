@@ -26,6 +26,7 @@ class StoreRequest extends FormRequest
             'deadline' => 'required|date',
             'file' => 'nullable|file',
             'project_id' => 'required|integer|exists:projects,id',
+            'user_id' => 'required|string|exists:users,id',
         ];
     }
 

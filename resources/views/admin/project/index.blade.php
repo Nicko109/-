@@ -39,7 +39,11 @@
                                         <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Название</th>
+                                            <th>
+                                                Название
+                                                <a href="{{ route('admin.project.index', ['sort' => 'asc'])}}">↑</a>
+                                                <a href="{{ route('admin.project.index', ['sort' => 'desc'])}}">↓</a>
+                                            </th>
                                             <th colspan="3" class="text-center">Действие</th>
                                         </tr>
                                         </thead>

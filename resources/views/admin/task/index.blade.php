@@ -38,9 +38,15 @@
                                         <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Название</th>
+                                            <th>
+                                                Название
+                                                <a href="{{ route('admin.task.index', ['sort' => 'asc']) }}">↑</a>
+                                                <a href="{{ route('admin.task.index', ['sort' => 'desc']) }}">↓</a>
+                                            </th>
                                             <th>Проект</th>
-                                            <th>Дата выполнения</th>
+                                            <th>
+                                                Дата выполнения
+                                            </th>
                                             <th colspan="4" class="text-center">Действие</th>
                                         </tr>
                                         </thead>

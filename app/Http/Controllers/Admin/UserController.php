@@ -18,8 +18,11 @@ class UserController extends Controller
     {
         $data = $request->validated();
 
-        $role = $request->input('role');
+        $role = $request->input('role', 'selected');
 
+        $sort = $request->input('sort', 'asc');
+
+        $column = $request->input('column', 'name');
 
         $userQuery = User::query();
 
@@ -37,6 +40,8 @@ class UserController extends Controller
         if ($role !== 'selected') {
             $userQuery->where('role', $role);
         }
+
+        $userQuery->orderBy($column, $sort);
 
         $users = $userQuery->paginate(3);
 
@@ -57,7 +62,7 @@ class UserController extends Controller
     {
         $roles = User::getRoles();
 
-        return view('admin.user.create', compact('roles'));
+        return view('admin.user.create', compact('roles' ));
     }
 
     public function store(StoreRequest $request)

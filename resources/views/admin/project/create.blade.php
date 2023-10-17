@@ -35,6 +35,19 @@
                             <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
+                        <div class="form-group">
+                            <label>Выберите пользователя</label>
+                            <select name="user_id" class="form-control">
+                                @foreach($users as $user)
+                                    <option value="{{ $user->id }}"
+                                        {{ $user->id == old('user_id') ? 'selected' : ''}}
+                                    >{{ $user->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('user_id')
+                            <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
                         <input type="submit" class="btn btn-primary" value="Добавить">
                     </form>
                     </div>

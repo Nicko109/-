@@ -47,8 +47,16 @@
                                         <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Имя</th>
-                                            <th>Email</th>
+                                            <th>
+                                                Имя
+                                                <a href="{{ route('admin.user.index', ['sort' => 'asc', 'column' => 'name']) }}">↑</a>
+                                                <a href="{{ route('admin.user.index', ['sort' => 'desc', 'column' => 'name']) }}">↓</a>
+                                            </th>
+                                            <th>
+                                                Email
+                                                <a href="{{ route('admin.user.index', ['sort' => 'asc', 'column' => 'email']) }}">↑</a>
+                                                <a href="{{ route('admin.user.index', ['sort' => 'desc', 'column' => 'email']) }}">↓</a>
+                                            </th>
                                             <th colspan="3" class="text-center">Действие</th>
                                         </tr>
                                         </thead>

@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\Project\FilterRequest;
 use App\Http\Requests\Admin\Project\StoreRequest;
 use App\Http\Requests\Admin\Project\UpdateRequest;
 use App\Models\Project;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -17,9 +18,13 @@ class ProjectController extends Controller
 
         $projectQuery = Project::query();
 
+        $sort = $request->input('sort', 'asc');
+
         if (isset($data['title'])) {
             $projectQuery->where('title', 'like', "%{$data['title']}%");
         }
+
+        $projectQuery->orderBy('title', $sort);
 
         $projects = $projectQuery->paginate(7);
 
@@ -33,14 +38,16 @@ class ProjectController extends Controller
 
     public function create()
     {
-        return view('admin.project.create');
+        $users = User::all();
+
+
+        return view('admin.project.create', compact('users'));
     }
 
     public function store(StoreRequest $request)
     {
         $data = $request->validated();
 
-        $data['user_id'] = auth()->user()->id;
 
         Project::firstOrcreate($data);
 
