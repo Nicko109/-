@@ -24,13 +24,11 @@
         <section class="content">
             <div class="container-fluid">
                 <!-- Small boxes (Stat box) -->
-                <div class="row">
-                    <div class="col-2 mb-3">
-                        <a href="{{ route('admin.task.create') }}" class="btn btn-block btn-primary">Добавить</a>
-                    </div>
-                </div>
-
-                <div class="row w-75">
+                <form class="search-form" action="{{ route('admin.task.index') }}" autocomplete="off" method="GET">
+                    <input class="search-form__input" type="text" name="title" placeholder="Название задачи" value="{{ request()->get('title') }}">
+                    <input class="btn-primary mb-4" type="submit" value="Поиск">
+                </form>
+                <div class="row w-100">
                     <div class="col-12">
                             <div class="card">
 
@@ -41,8 +39,8 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Название</th>
-                                            <th>Дата выполнения</th>
                                             <th>Проект</th>
+                                            <th>Дата выполнения</th>
                                             <th colspan="4" class="text-center">Действие</th>
                                         </tr>
                                         </thead>
@@ -51,8 +49,8 @@
                                             <tr>
                                                 <td>{{ $task->id }}</td>
                                                 <td>{{ $task->title }}</td>
-                                                <td>{{ \Carbon\Carbon::parse($task->deadline)->format('d.m.Y') }}</td>
                                                 <td>{{ $task->project->title }}</td>
+                                                <td>{{ \Carbon\Carbon::parse($task->deadline)->format('d.m.Y') }}</td>
                                                 <td class="text-center"> <a href="{{ route('admin.task.show', $task->id) }}"><i class="far fa-eye"></i></a></td>
                                                 <td class="text-center"> <a href="{{ route('admin.task.edit', $task->id) }}" class="text-success"><i class="fas fa-edit"></i></a></td>
                                                 <td class="text-center">
@@ -68,6 +66,9 @@
                                         @endforeach
                                         </tbody>
                                     </table>
+                                    <div>
+                                        {{ $tasks->withQueryString()->links() }}
+                                    </div>
                                 </div>
                                 <!-- /.card-body -->
                             </div>
@@ -75,7 +76,11 @@
                     </div>
                 </div>
                 <!-- /.row -->
-
+                <div class="row">
+                    <div class="col-2 mb-3">
+                        <a href="{{ route('admin.task.create') }}" class="btn btn-block btn-primary">Добавить</a>
+                    </div>
+                </div>
             </div><!-- /.container-fluid -->
         </section>
         <!-- /.content -->

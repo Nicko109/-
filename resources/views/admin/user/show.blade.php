@@ -44,16 +44,42 @@
                                 <div class="card-body table-responsive p-0">
                                     <table class="table table-hover text-nowrap">
                                         <tbody>
+                                        <thead>
                                         <tr>
-                                            <td>ID</td>
+                                            <th>Id</th>
+                                            <th>Имя</th>
+                                            <th>Email</th>
+                                        </tr>
+                                        <tr>
                                             <td>{{ $user->id }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Название</td>
                                             <td>{{ $user->name }}</td>
+                                            <td>{{ $user->email }}</td>
+
                                         </tr>
+                                        </thead>
                                         </tbody>
                                     </table>
+                                </div>
+                                <div class="card-body table-responsive p-0">
+                                    <table class="table table-hover text-nowrap">
+                                        <tbody>
+                                        <thead>
+                                        <tr>
+                                            <th>Задачи</th>
+                                            <th>Проект</th>
+                                        </tr>
+                                        </thead>
+                                        @foreach($tasks as $task)
+                                            <tr>
+                                                <td>{{ $task->title }}</td>
+                                                <td>{{ $task->project->title }}</td>
+                                            </tr>
+                                            @endforeach
+                                            </tbody>
+                                    </table>
+                                    <div>
+                                        {{ $tasks->withQueryString()->links() }}
+                                    </div>
                                 </div>
                                 <!-- /.card-body -->
                             </div>

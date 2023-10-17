@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Task\FilterRequest;
 use App\Http\Requests\Admin\Task\StoreRequest;
 use App\Http\Requests\Admin\Task\UpdateRequest;
 use App\Models\Project;
@@ -12,9 +13,18 @@ use Illuminate\Support\Facades\Storage;
 
 class TaskController extends Controller
 {
-    public function index()
+    public function index(FilterRequest $request)
     {
-        $tasks = Task::all();
+        $data = $request->validated();
+
+        $taskQuery = Task::query();
+
+        if (isset($data['title']) ) {
+            $taskQuery->where('title', 'like', "%{$data['title']}%");
+        }
+
+
+        $tasks = $taskQuery->paginate(6);
         $projects = Project::all();
         return view('admin.task.index', compact('tasks', 'projects'));
     }

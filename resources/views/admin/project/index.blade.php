@@ -24,12 +24,11 @@
         <section class="content">
             <div class="container-fluid">
                 <!-- Small boxes (Stat box) -->
-                <div class="row">
-                    <div class="col-2 mb-3">
-                        <a href="{{ route('admin.project.create') }}" class="btn btn-block btn-primary">Добавить</a>
-                    </div>
-                </div>
 
+                <form class="search-form" action="{{ route('admin.project.index') }}" autocomplete="off" method="GET">
+                    <input class="search-form__input" type="text" name="title" placeholder="Название проекта" value="{{ request()->get('title') }}">
+                    <input class="btn-primary mb-4" type="submit" value="Поиск">
+                </form>
                 <div class="row">
                     <div class="col-6">
                             <div class="card">
@@ -64,6 +63,9 @@
                                         @endforeach
                                         </tbody>
                                     </table>
+                                    <div>
+                                        {{ $projects->withQueryString()->links() }}
+                                    </div>
                                 </div>
                                 <!-- /.card-body -->
                             </div>
@@ -71,7 +73,11 @@
                     </div>
                 </div>
                 <!-- /.row -->
-
+                <div class="row">
+                    <div class="col-2 mb-3">
+                        <a href="{{ route('admin.project.create') }}" class="btn btn-block btn-primary">Добавить</a>
+                    </div>
+                </div>
             </div><!-- /.container-fluid -->
         </section>
         <!-- /.content -->

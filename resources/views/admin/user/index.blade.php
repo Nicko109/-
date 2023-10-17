@@ -24,16 +24,15 @@
         <section class="content">
             <div class="container-fluid">
                 <!-- Small boxes (Stat box) -->
-                <div class="row">
-                    <div class="col-2 mb-3">
-                        <a href="{{ route('admin.user.create') }}" class="btn btn-block btn-primary">Добавить</a>
-                    </div>
-                </div>
 
+                <form class="search-form" action="{{ route('admin.user.index') }}" autocomplete="off" method="GET">
+                    <input class="search-form__input" type="text" name="name" placeholder="Имя" value="{{ request()->get('name') }}">
+                    <input class="search-form__input ml-3" type="text" name="email" placeholder="Email" value="{{ request()->get('email') }}">
+                    <input class="btn-primary mb-4" type="submit" value="Поиск">
+                </form>
                 <div class="row">
                     <div class="col-6">
                             <div class="card">
-
                                 <!-- /.card-header -->
                                 <div class="card-body table-responsive p-0">
                                     <table class="table table-hover text-nowrap">
@@ -41,6 +40,7 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Имя</th>
+                                            <th>Email</th>
                                             <th colspan="3" class="text-center">Действие</th>
                                         </tr>
                                         </thead>
@@ -49,6 +49,7 @@
                                             <tr>
                                                 <td>{{ $user->id }}</td>
                                                 <td>{{ $user->name }}</td>
+                                                <td>{{ $user->email }}</td>
                                                 <td class="text-center"> <a href="{{ route('admin.user.show', $user->id) }}"><i class="far fa-eye"></i></a></td>
                                                 <td class="text-center"> <a href="{{ route('admin.user.edit', $user->id) }}" class="text-success"><i class="fas fa-edit"></i></a></td>
                                                 <td class="text-center">
@@ -64,14 +65,22 @@
                                         @endforeach
                                         </tbody>
                                     </table>
+                                    <div>
+                                        {{ $users->withQueryString()->links() }}
+                                    </div>
                                 </div>
+
                                 <!-- /.card-body -->
                             </div>
                             <!-- /.card -->
                     </div>
                 </div>
                 <!-- /.row -->
-
+                <div class="row">
+                    <div class="col-2 mb-3">
+                        <a href="{{ route('admin.user.create') }}" class="btn btn-block btn-primary">Добавить</a>
+                    </div>
+                </div>
             </div><!-- /.container-fluid -->
         </section>
         <!-- /.content -->

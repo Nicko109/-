@@ -27,41 +27,49 @@
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
                     <div class="col-12">
-                    <form class="w-25" action="{{ route('admin.user.update', $user->id) }}" method="POST">
-                        @csrf
-                        @method('PATCH')
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Имя пользователя" name="name"  value="{{ $user->name }}">
-                            @error('name')
-                            <div class="text-danger">Это поле необходимо для заполнения</div>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Электронная почта" name="email"
-                            value="{{ $user->email }}"
-                            >
-                            @error('email')
-                            <div class="text-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label>Выберите роль</label>
-                            <select name="role" class="form-control">
-                                @foreach($roles as $id => $role)
-                                    <option value="{{ $id }}"
-                                        {{ $id == $user->role ? 'selected' : ''}}
-                                    >{{ $role }}</option>
-                                @endforeach
-                            </select>
-                            @error('role')
-                            <div class="text-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="form-group w-50">
-                            <input type="hidden" name="user_id" value="{{ $user->id }}">
-                        </div>
-                        <input type="submit" class="btn btn-primary" value="Изменить">
-                    </form>
+                        <form class="w-25" action="{{ route('admin.user.update', $user->id) }}" method="POST">
+                            @csrf
+                            @method('PATCH')
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Имя пользователя" name="name"  value="{{ $user->name }}">
+                                @error('name')
+                                <div class="text-danger">Это поле необходимо для заполнения</div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Электронная почта" name="email"
+                                       value="{{ $user->email }}"
+                                >
+                                @error('email')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Пароль" name="password"
+                                       value="{{old('password')}}"
+                                >
+                                @error('password')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label>Выберите роль</label>
+                                <select name="role" class="form-control">
+                                    @foreach($roles as $id => $role)
+                                        <option value="{{ $id }}"
+                                            {{ $id == $user->role ? 'selected' : ''}}
+                                        >{{ $role }}</option>
+                                    @endforeach
+                                </select>
+                                @error('role')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group w-50">
+                                <input type="hidden" name="user_id" value="{{ $user->id }}">
+                            </div>
+                            <input type="submit" class="btn btn-primary" value="Изменить">
+                        </form>
                     </div>
                 </div>
                 <!-- /.row -->

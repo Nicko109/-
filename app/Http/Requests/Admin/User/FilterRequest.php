@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Main\Task;
+namespace App\Http\Requests\Admin\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -22,9 +22,8 @@ class FilterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'nullable|string',
-            'filter' => 'in:today,tomorrow,overdue,all,completed',
-            'project_id' => 'exists,id',
+            'name' => 'nullable|string',
+            'email' => 'nullable|string',
         ];
     }
 

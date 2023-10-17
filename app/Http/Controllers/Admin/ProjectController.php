@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Project\FilterRequest;
 use App\Http\Requests\Admin\Project\StoreRequest;
 use App\Http\Requests\Admin\Project\UpdateRequest;
 use App\Models\Project;
@@ -10,9 +11,17 @@ use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
-    public function index()
+    public function index(FilterRequest $request)
     {
-        $projects = Project::all();
+        $data = $request->validated();
+
+        $projectQuery = Project::query();
+
+        if (isset($data['title'])) {
+            $projectQuery->where('title', 'like', "%{$data['title']}%");
+        }
+
+        $projects = $projectQuery->paginate(7);
 
         return view('admin.project.index', compact('projects'));
     }
