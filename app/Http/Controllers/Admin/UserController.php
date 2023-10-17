@@ -18,6 +18,9 @@ class UserController extends Controller
     {
         $data = $request->validated();
 
+        $role = $request->input('role');
+
+
         $userQuery = User::query();
 
         if (isset($data['name']) || isset($data['email'])) {
@@ -31,10 +34,15 @@ class UserController extends Controller
             });
         }
 
+        if ($role !== 'selected') {
+            $userQuery->where('role', $role);
+        }
 
         $users = $userQuery->paginate(3);
 
-        return view('admin.user.index', compact('users'));
+        $roles = User::getRoles();
+
+        return view('admin.user.index', compact('users', 'roles'));
     }
 
     public function show(User $user)

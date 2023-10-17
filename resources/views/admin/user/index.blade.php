@@ -28,6 +28,14 @@
                 <form class="search-form" action="{{ route('admin.user.index') }}" autocomplete="off" method="GET">
                     <input class="search-form__input" type="text" name="name" placeholder="Имя" value="{{ request()->get('name') }}">
                     <input class="search-form__input ml-3" type="text" name="email" placeholder="Email" value="{{ request()->get('email') }}">
+
+                    <select name="role" class="search-form__select">
+                        <option value="selected">Все роли</option>
+                        @foreach($roles as $key => $role)
+                            <option value="{{ $key }}" {{ (request('role') == $key) ? 'selected' : '' }}>{{ $role }}</option>
+                        @endforeach
+                    </select>
+
                     <input class="btn-primary mb-4" type="submit" value="Поиск">
                 </form>
                 <div class="row">
