@@ -18,6 +18,7 @@ class Task extends Model
 
     protected $table = 'tasks';
 
+
     public function project(){
 
         return $this->belongsTo(Project::class, 'project_id', 'id');

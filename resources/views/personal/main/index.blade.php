@@ -41,7 +41,7 @@
                         @endif
                     </td>
 
-                    <td class="task__date">{{ \Carbon\Carbon::parse($task->deadline)->format('d.m.Y') }}</td>
+                    <td class="task__date" style="white-space: nowrap">{{ \Carbon\Carbon::parse($task->deadline)->format('d.m.Y H:i') }}</td>
 
                 </tr>
             @endforeach

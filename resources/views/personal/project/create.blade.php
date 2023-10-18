@@ -9,7 +9,7 @@
                         @csrf
                         <div class="form__row">
                             <label class="form__label" for="project_name">Название <sup>*</sup></label>
-                            <input class="form__input @error('email') form__input--error @enderror" type="text" name="title" id="project_name" placeholder="Введите название проекта">
+                            <input class="form__input @error('title') form__input--error @enderror" type="text" name="title" id="project_name" placeholder="Введите название проекта">
                             @error('title')
                             <span class="form__message" role="alert">
                                         <strong>{{ $message }}</strong>
