@@ -45,7 +45,6 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
 
     Route::prefix('admin')->group(function () {
         Route::get('/', [App\Http\Controllers\Admin\MainController::class, 'index'])->name('admin.main.index');
-        Route::get('/static', [App\Http\Controllers\Admin\StaticController::class, 'index'])->name('admin.static.index');
 
         Route::prefix('tasks')->group(function () {
             Route::get('/', [App\Http\Controllers\Admin\TaskController::class, 'index'])->name('admin.task.index');

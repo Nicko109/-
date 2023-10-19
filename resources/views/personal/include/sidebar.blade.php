@@ -3,9 +3,14 @@
 
     <nav class="main-navigation">
         <ul class="main-navigation__list">
+            @if($projects->count() > 0 )
+                <li class="main-navigation__list-item{{ request('project') == 0 ? ' main-navigation__list-item--active' : '' }}">
+                    <a class="main-navigation__list-item-link" href="{{ route('personal.main.index', ['projects' => 0, 'filter' => 'all']) }}">Все проекты</a>
+                </li>
+            @endif
             @foreach($projects as $project)
                 <li class="main-navigation__list-item{{ request('project') == $project->id ? ' main-navigation__list-item--active' : '' }}">
-                    <a class="main-navigation__list-item-link" href="{{ route('personal.main.index', ['project' => $project->id]) }}">{{ $project->title }}</a>
+                    <a class="main-navigation__list-item-link" href="{{ route('personal.main.index', ['project' => $project->id, 'filter' => 'all']) }}">{{ $project->title }}</a>
                     <span class="main-navigation__list-item-count">{{ $project->tasks->count() }}</span>
                 </li>
             @endforeach

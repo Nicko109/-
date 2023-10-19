@@ -18,7 +18,7 @@ class IndexController extends Controller
 
         $data = $request->validated();
 
-        $taskQuery = Task::where('user_id', $user->id);
+        $taskQuery = Task::query()->where('user_id', $user->id)->with('project');
 
 
         if (isset($data['title'])) {

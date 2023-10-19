@@ -31,7 +31,7 @@
                                 <h3>{{ $data['usersCount'] }}</h3>
 
                                 <p>Пользователи</p>
-                                <p>Создано в последние 5 дней: {{ $data['usersCreatedInPeriod'] }} пользователей</p>
+                                <p>Создано: {{ $data['usersCreatedInPeriod'] }} пользователей</p>
                             </div>
                             <div class="icon">
                                 <i class="fas fa-users"></i>
@@ -46,7 +46,7 @@
                             <div class="inner">
                                 <h3>{{ $data['tasksCount'] }}</h3>
                                 <p>Задачи</p>
-                                <p>Создано в последние 5 дней: {{ $data['tasksCreatedInPeriod'] }} задачи</p>
+                                <p>Создано: {{ $data['tasksCreatedInPeriod'] }} задачи</p>
                             </div>
                             <div class="icon">
                                 <i class="far fa-clipboard"></i>
@@ -62,7 +62,7 @@
                                 <h3>{{ $data['projectsCount'] }}</h3>
 
                                 <p>Проекты</p>
-                                <p>Создано в последние 5 дней: {{ $data['projectsCreatedInPeriod'] }} проектов</p>
+                                <p>Создано: {{ $data['projectsCreatedInPeriod'] }} проектов</p>
                             </div>
                             <div class="icon">
                                 <i class="fas fa-th-list"></i>
